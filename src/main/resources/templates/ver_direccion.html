@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Listado de Direcciones</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="row">
+            <h1>Lista de Direcciones</h1>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-3">
+               
+            </div>
+        </div>
+        <br>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Direcciones</th>
+                    <th scope="col">Acción</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="direccion, rowStat : ${direcciones}">
+                    <th scope="row" th:text="${rowStat.index + 1}"></th>
+                    <td th:text="${direccion.calle} + ' ' + ${direccion.numero}"></td>
+                    <td>
+                        <a th:href="@{/direcciones/editar/{id}(id=${direccion.id})}" class="btn btn-success">Editar</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/direcciones/eliminar/{id}(id=${direccion.id})}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
